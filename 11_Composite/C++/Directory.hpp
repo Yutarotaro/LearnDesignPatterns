@@ -1,4 +1,4 @@
-#include <iostream>
+#pragma once
 #include <list>
 #include <memory>
 #include <string>
@@ -14,7 +14,7 @@ class File : public IDirectoryEntry {
 
   public:
     File(std::string name) : _name(name) {}
-    void remove() { std::cout << _name << " Deleted!" << std::endl; }
+    void remove() override;
 };
 
 class Directory : public IDirectoryEntry {
@@ -24,11 +24,15 @@ class Directory : public IDirectoryEntry {
 
   public:
     Directory(std::string name) : _name(name), _list({}) {}
-    void add(std::shared_ptr<IDirectoryEntry> entry) { _list.push_back(entry); }
-    void remove() {
-        for (auto &i : _list) {
-            i->remove();
-        }
-        std::cout << _name << " Deleted!" << std::endl;
-    }
+    void add(std::shared_ptr<IDirectoryEntry> entry);
+    void remove() override;
+};
+
+class SymbolicLink : public IDirectoryEntry {
+  private:
+    std::string _name;
+
+  public:
+    SymbolicLink(std::string name) : _name(name) {}
+    void remove() override;
 };
