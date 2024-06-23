@@ -1,0 +1,8 @@
+export interface IDirectoryEntory {
+    remove(): void
+}
+
+export interface IDirectoryEntory {
+    remove(): void
+}
+
