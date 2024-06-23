@@ -7,3 +7,8 @@
 $ make src_dir=11_Composite/C++
 $ ./bin/program
 ```
+
+### TypeScript
+```=zsh
+$ ./run_ts.sh 11_Composite/TypeScript
+```
